@@ -1,5 +1,5 @@
 vehicles = []
-vehicle_properties = ["id", "fabricante", "modelo", "color", "motor"]
+vehicle_properties = ["id", "fabricante", "modelo", "color", "id_motor"]
 
 class Vehicle:
     def __init__(self, id, fabricante, modelo, color, motor):
@@ -65,7 +65,10 @@ def edit_vehicle():
                                   "\"fabricante\", "
                                   "\"modelo\", "                                 
                                   "\"color\", "
-                                  "\"motor\": "))
+                                  "\"id_motor\", "
+                                  "\"cc\", "
+                                  "\"cv\", "
+                                  "\"peso\": "))
         if property_edit not in vehicle_properties:
             continue
 
@@ -81,9 +84,18 @@ def edit_vehicle():
         elif property_edit == "color":
             vehicles[product_index - 1].color = str(
                 input("Introduzca el nuevo color del vehículo {}: ".format(product_index)))
-        elif property_edit == "motor":
-            vehicles[product_index - 1]["motor"] = float(
-                input("Introduzca el nuevo motor del vehículo {}: ".format(product_index)))
+        elif property_edit == "id_motor":
+            vehicles[product_index - 1].motor.id_motor = int(
+                input("Introduzca el nuevo id del motor del vehículo {}: ".format(product_index)))
+        elif property_edit == "cc":
+            vehicles[product_index - 1].motor.cc = int(
+                input("Introduzca los cc del motor del vehículo {}: ".format(product_index)))
+        elif property_edit == "cv":
+            vehicles[product_index - 1].motor.cv = int(
+                input("Introduzca los cv del motor del vehículo {}: ".format(product_index)))
+        elif property_edit == "peso":
+            vehicles[product_index - 1].motor.peso = int(
+                input("Introduzca el peso del motor del vehículo {}: ".format(product_index)))
 
         print("Vehículo {} modificado correctamente."
               .format(vehicles[product_index - 1].fabricante)
