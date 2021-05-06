@@ -1,18 +1,20 @@
+vehicles = []
+vehicle_properties = ["id", "fabricante", "modelo", "color", "motor"]
 
 class Vehicle:
-    def __init__(self, id, manufacturer, model, color, engine):
+    def __init__(self, id, fabricante, modelo, color, motor):
         self.id = id
-        self.manufacturer = manufacturer
-        self.model = model
+        self.fabricante = fabricante
+        self.modelo = modelo
         self.color = color
-        self.engine = engine
+        self.motor = motor
 
     def __str__(self):
         return f"Vehicle(id={self.id}, " \
-               f"manufacturer = {self.manufacturer}, " \
-               f"model = {self.model}, " \
+               f"fabricante = {self.fabricante}, " \
+               f"modelo = {self.modelo}, " \
                f"color = {self.color}, " \
-               f"engine = {self.engine} " \
+               f"motor = {self.motor} " \
                f")"
 
     def __repr__(self):
@@ -37,7 +39,7 @@ class Motor:
         return self.__str__()
 
 
-vehicles = []
+
 
 
 def find_vehicle(id_vehicle):
@@ -52,16 +54,49 @@ def delete_vehicle(id_vehicle):
             del (vehicles[id_vehicle - 1])
             print("El vehículo se ha borrado")
 
+def edit_vehicle():
 
+    product_index = int(input("Introduzca el índice del vehículo que desea editar de 1 a {}: ".format(len(vehicles))))
+
+    property_edit = ''
+    while property_edit not in vehicle_properties:
+        property_edit = str(input("Introduzca la propiedad que desea editar: "
+                                  "\"id\", "
+                                  "\"fabricante\", "
+                                  "\"modelo\", "                                 
+                                  "\"color\", "
+                                  "\"motor\": "))
+        if property_edit not in vehicle_properties:
+            continue
+
+        if property_edit == "id":
+            vehicles[product_index - 1].id = int(
+                input("Introduzca el nuevo id del vehículo {}: ".format(product_index)))
+        elif property_edit == "fabricante":
+            vehicles[product_index - 1].fabricante = str(
+                input("Introduzca el nuevo fabricante del vehículo {}: ".format(product_index)))
+        elif property_edit == "modelo":
+            vehicles[product_index - 1].modelo = str(
+                input("Introduzca el nuevo modelo del vehículo {}: ".format(product_index)))
+        elif property_edit == "color":
+            vehicles[product_index - 1].color = str(
+                input("Introduzca el nuevo color del vehículo {}: ".format(product_index)))
+        elif property_edit == "motor":
+            vehicles[product_index - 1]["motor"] = float(
+                input("Introduzca el nuevo motor del vehículo {}: ".format(product_index)))
+
+        print("Vehículo {} modificado correctamente."
+              .format(vehicles[product_index - 1].fabricante)
+              )
 while True:
     print("""
    Gestión de vehículos:
 1- Consultar vehículos
 2- Consultar un vehículo
-3- Crear vehiculo    
-4- Actualizar vehiculo    
-5- Borrar vehiculo    
-6- Borrar todos los vehiculos
+3- Crear un vehículo    
+4- Editar un  vehículo    
+5- Borrar un vehículo    
+6- Borrar todos los vehículos
 7- Salir   
 
     """)
@@ -95,12 +130,14 @@ while True:
         cv = int(input("Introduce los cv del motor: "))
         peso = float(input("Introduce el peso del motor: "))
         # objetos
-        engine = Motor(id_motor, cc, cv, peso)
-        vehicle = Vehicle(id, manufacturer, model, color, engine)
+        motor = Motor(id_motor, cc, cv, peso)
+        vehicle = Vehicle(id, manufacturer, model, color, motor)
+
         vehicles.append(vehicle)
+        print("Vehículo regitrado")
 
     if option == 4:
-        pass
+        edit_vehicle()
 
     if option == 5:
         if len(vehicles) == 0:
