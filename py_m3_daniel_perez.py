@@ -122,7 +122,7 @@ while True:
 
     if option == 2:
         if len(vehicles) == 0:
-            print("No hay vehículos disponibles")
+            print('No hay vehículos disponibles')
             continue
         id_vehicle = int(input("Introduce el id del vehículo: "))
         Vehicle = find_vehicle(id_vehicle)
