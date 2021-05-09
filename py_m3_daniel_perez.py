@@ -134,8 +134,8 @@ while True:
     if option == 3:
         # variables
         id = int(input("Introduce el ID: "))
-        manufacturer = input("Introduce el fabricante: ")
-        model = input("Introduce el modelo: ")
+        fabricante = input("Introduce el fabricante: ")
+        modelo = input("Introduce el modelo: ")
         color = input("Introduce el color: ")
         id_motor = int(input("Introduce el ID del motor: "))
         cc = int(input("Introduce los cc del motor: "))
@@ -143,7 +143,7 @@ while True:
         peso = float(input("Introduce el peso del motor: "))
         # objetos
         motor = Motor(id_motor, cc, cv, peso)
-        vehicle = Vehicle(id, manufacturer, model, color, motor)
+        vehicle = Vehicle(id, fabricante, modelo, color, motor)
 
         vehicles.append(vehicle)
         print("Vehículo regitrado")
