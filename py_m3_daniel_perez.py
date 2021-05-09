@@ -159,10 +159,12 @@ while True:
         Vehicle = delete_vehicle(id_vehicle)
 
     if option == 6:
+        if len(vehicles) == 0:
+            print("No hay vehículos disponibles")
+            continue
         bucle = True
         while bucle:
             seguro = input("¿Seguro que quieres borrar todos los vehículos (s, n)? ")
-
             if seguro == "s":
                 vehicles.clear()
                 bucle = False
