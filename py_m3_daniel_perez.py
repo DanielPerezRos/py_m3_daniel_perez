@@ -155,13 +155,13 @@ while True:
         if len(vehicles) == 0:
             print("No hay vehículos")
             continue
-        id_vehicle = int(input("Introduzca el índice del vehículo que desea borrar de 1 a {}: ".format(len(vehicles))))
+        id_vehicle = int(input("Introduce el índice del vehículo que deseas borrar de 1 a {}: ".format(len(vehicles))))
         Vehicle = delete_vehicle(id_vehicle)
 
     if option == 6:
         bucle = True
         while bucle:
-            seguro = input("¿Seguro que quiere borrar todos los vehículos (si, no)? ")
+            seguro = input("¿Seguro que quieres borrar todos los vehículos (s, n)? ")
 
             if seguro == "s":
                 vehicles.clear()
